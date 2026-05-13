@@ -1,6 +1,7 @@
 import __common__
 
 import logging
+import os
 import sys
 
 from pyrot import ro_interface
@@ -23,7 +24,13 @@ new_eyemodel_description = "imported eye model"  # no requirements
 logger.debug("commencing import")
 
 patient = ro_interface.load_current_patient()
-import_path = Config.IMPORT_PATH  # TODO: search the correct .json file from the directory
+import_directory = Config.IMPORT_DIRECTORY
+import_file_name_element = Config.IMPORT_FILE_NAME_ELEMENT
+eye_model_files = [file for file in os.listdir(import_directory) if import_file_name_element in file]
+if len(eye_model_files) != 1:
+    raise KeyError(f'import directory {import_directory} returns {len(eye_model_files)} files, please alter Config.IMPORT_FILE_NAME_ELEMENT in customization.py')
+import_path = os.path.join(import_directory, eye_model_files[0])
+
 structure_set = ro_interface.load_current_structureset()
 geometry_generators, _ = ro_interface.load_eyemodel(structure_set=structure_set, eyemodelnr=Config.EYE_MODEL_NR)
 
