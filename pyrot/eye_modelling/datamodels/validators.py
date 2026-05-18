@@ -130,8 +130,8 @@ class RayOcularField(ValidatedField[Value]):
     default : Value, optional
         The default value for the field. If not provided, the field will be required and must be set explicitly.
     importable : bool, optional
-        Whether the field should be included when importing from RayOcular. If False, the field will be ignored during import.
-        Defaults to True.
+        Whether the field should be included when importing a serialized model to RayOcular.
+        If False, the field will be ignored during import. Defaults to True.
 
     Attributes
     ----------

@@ -94,6 +94,8 @@ class BaseModel:
     def to_rayocular(self) -> dict[str, Any]:
         """Convert the data model instance to a RayOcular dictionary.
 
+        Only parameters that can be used as input for RayOcular's update functions are included in the output.
+
         Returns
         -------
         dict[str, Any]
