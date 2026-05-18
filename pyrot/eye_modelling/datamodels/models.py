@@ -343,17 +343,17 @@ class Iris(BaseModel):
 
     Attributes
     ----------
-    inner_semi_axis : RayOcularField[Vector3[float]]
+    inner_semi_axis : Vector3[float]
         Inner semi-axes of the iris.
-    outer_semi_axis : RayOcularField[Vector3[float]]
+    outer_semi_axis : Vector3[float]
         Outer semi-axes of the iris.
-    local_rotation : RayOcularField[Vector3[float]]
+    local_rotation : Vector3[float]
         Local rotation of the iris.
-    local_scale : RayOcularField[Vector3[float]]
+    local_scale : Vector3[float]
         Local scale of the iris.
-    local_translation : RayOcularField[Vector3[float]]
+    local_translation : Vector3[float]
         Local translation of the iris.
-    thickness : RayOcularField[float]
+    thickness : float
         Thickness of the iris.
     """
 
@@ -375,15 +375,15 @@ class Lens(BaseModel):
 
     Attributes
     ----------
-    curvature : RayOcularField[float]
+    curvature : float
         Curvature of the lens.
-    local_rotation : RayOcularField[Vector3[float]]
+    local_rotation : Vector3[float]
         Local rotation of the lens.
-    local_scale : RayOcularField[Vector3[float]]
+    local_scale : Vector3[float]
         Local scale of the lens.
-    local_translation : RayOcularField[Vector3[float]]
+    local_translation : Vector3[float]
         Local translation of the lens.
-    semi_axis : RayOcularField[Vector3[float]]
+    semi_axis : Vector3[float]
         Semi-axes of the lens.
     """
 
@@ -404,17 +404,17 @@ class Macula(BaseModel):
 
     Attributes
     ----------
-    height : RayOcularField[float]
+    height : float
         Height of the macula.
-    local_rotation : RayOcularField[Vector3[float]]
+    local_rotation : Vector3[float]
         Local rotation of the macula.
-    local_scale : RayOcularField[Vector3[float]]
+    local_scale : Vector3[float]
         Local scale of the macula.
-    local_translation : RayOcularField[Vector3[float]]
+    local_translation : Vector3[float]
         Local translation of the macula.
-    rotation : RayOcularField[Vector3[float]]
+    rotation : Vector3[float]
         Rotation of the macula.
-    semi_axis : RayOcularField[Vector3[float]]
+    semi_axis : Vector3[float]
         Semi-axes of the macula.
     """
 
@@ -436,15 +436,15 @@ class OpticalDisc(BaseModel):
 
     Attributes
     ----------
-    height : RayOcularField[float]
+    height : float
         Height of the optical disc.
-    local_rotation : RayOcularField[Vector3[float]]
+    local_rotation : Vector3[float]
         Local rotation of the optical disc.
-    local_scale : RayOcularField[Vector3[float]]
+    local_scale : Vector3[float]
         Local scale of the optical disc.
-    local_translation : RayOcularField[Vector3[float]]
+    local_translation : Vector3[float]
         Local translation of the optical disc.
-    semi_axis : RayOcularField[Vector3[float]]
+    semi_axis : Vector3[float]
         Semi-axes of the optical disc.
     """
 
@@ -467,17 +467,17 @@ class OpticalNerve(BaseModel):
 
     Attributes
     ----------
-    height : RayOcularField[float]
+    height : float
         Height of the optical nerve.
-    local_rotation : RayOcularField[Vector3[float]]
+    local_rotation : Vector3[float]
         Local rotation of the optical nerve.
-    local_scale : RayOcularField[Vector3[float]]
+    local_scale : Vector3[float]
         Local scale of the optical nerve.
-    local_translation : RayOcularField[Vector3[float]]
+    local_translation : Vector3[float]
         Local translation of the optical nerve.
-    rotation : RayOcularField[Vector3[float]]
+    rotation : Vector3[float]
         Rotation of the optical nerve.
-    semi_axis : RayOcularField[Vector3[float]]
+    semi_axis : Vector3[float]
         Semi-axes of the optical nerve.
     """
 
@@ -501,13 +501,13 @@ class Retina(BaseModel):
 
     Attributes
     ----------
-    thickness : RayOcularField[float]
+    thickness : float
         Thickness of the retina.
-    local_rotation : RayOcularField[Vector3[float]]
+    local_rotation : Vector3[float]
         Local rotation of the retina.
-    local_scale : RayOcularField[Vector3[float]]
+    local_scale : Vector3[float]
         Local scale of the retina.
-    local_translation : RayOcularField[Vector3[float]]
+    local_translation : Vector3[float]
         Local translation of the retina.
     """
 
@@ -527,15 +527,15 @@ class Sclera(BaseModel):
 
     Attributes
     ----------
-    thickness : RayOcularField[float]
+    thickness : float
         Thickness of the sclera.
-    local_rotation : RayOcularField[Vector3[float]]
+    local_rotation : Vector3[float]
         Local rotation of the sclera.
-    local_scale : RayOcularField[Vector3[float]]
+    local_scale : Vector3[float]
         Local scale of the sclera.
-    local_translation : RayOcularField[Vector3[float]]
+    local_translation : Vector3[float]
         Local translation of the sclera.
-    semi_axis : RayOcularField[Vector3[float]]
+    semi_axis : Vector3[float]
         Semi-axes of the sclera.
     """
 
@@ -556,11 +556,11 @@ class VitreousBody(BaseModel):
 
     Attributes
     ----------
-    local_rotation : RayOcularField[Vector3[float]]
+    local_rotation : Vector3[float]
         Local rotation of the vitreous body.
-    local_scale : RayOcularField[Vector3[float]]
+    local_scale : Vector3[float]
         Local scale of the vitreous body.
-    local_translation : RayOcularField[Vector3[float]]
+    local_translation : Vector3[float]
         Local translation of the vitreous body.
     """
 
@@ -581,33 +581,33 @@ class EyeModelParameters(BaseModel):
 
     Attributes
     ----------
-    eye : ValidatedField[Eye]
+    eye : Eye
         Eye positioning and scale parameters.
-    anterior_chamber : ValidatedField[AnteriorChamber]
+    anterior_chamber : AnteriorChamber
         Anterior chamber parameters.
-    ciliary_body : ValidatedField[CiliaryBody]
+    ciliary_body : CiliaryBody
         Ciliary body parameters.
-    cornea : ValidatedField[Cornea]
+    cornea : Cornea
         Cornea parameters.
-    iris : ValidatedField[Iris]
+    iris : Iris
         Iris parameters.
-    lens : ValidatedField[Lens]
+    lens : Lens
         Lens parameters.
-    macula : ValidatedField[Macula]
+    macula : Macula
         Macula parameters.
-    optical_disc : ValidatedField[OpticalDisc]
+    optical_disc : OpticalDisc
         Optical disc parameters.
-    optical_nerve : ValidatedField[OpticalNerve]
+    optical_nerve : OpticalNerve
         Optical nerve parameters.
-    retina : ValidatedField[Retina]
+    retina : Retina
         Retina parameters.
-    sclera : ValidatedField[Sclera]
+    sclera : Sclera
         Sclera parameters.
-    vitreous_body : ValidatedField[VitreousBody]
+    vitreous_body : VitreousBody
         Vitreous body parameters.
-    lens_cornea_distance : ValidatedField[float]
+    lens_cornea_distance : float
         Distance from lens to cornea.
-    level_of_detail : ValidatedField[int]
+    level_of_detail : int
         Level of detail for geometry rendering.
     """
 
@@ -672,13 +672,13 @@ class EyeModel(BaseModel):
         Eye model measurements.
     parameters : ValidatedField[EyeModelParameters]
         Eye model parameters.
-    laterality : RayOcularField[EyeLaterality]
+    laterality : EyeLaterality
         Eye laterality (Left or Right).
-    description : RayOcularField[str]
+    description : str
         Description of the eye model.
-    inter_pupillary_distance : RayOcularField[Optional[float]]
+    inter_pupillary_distance : Optional[float]
         Inter-pupillary distance.
-    name : RayOcularField[str]
+    name : str
         Name of the eye model.
     """
 
