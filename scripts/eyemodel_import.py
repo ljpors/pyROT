@@ -1,6 +1,7 @@
 import __common__
 
 import logging
+import os
 import sys
 
 from pyrot import ro_interface
@@ -11,14 +12,33 @@ from pyrot.eye_modelling.datamodels import model_import
 logging.basicConfig(level=logging.DEBUG, handlers=[logging.StreamHandler(sys.stdout)], force=True)
 logger = logging.getLogger(__name__)
 
+
+# --- user input
+
+import_method = "to_existing_eye_model"  # either 'to_existing_eye_model' or 'create_new_eye_model'
+new_eyemodel_name = "imported eye model"  # must be unique an non-empty
+new_eyemodel_description = "imported eye model"  # no requirements
+
+# --- end user input
+
 logger.debug("commencing import")
 
 patient = ro_interface.load_current_patient()
+import_directory = Config.IMPORT_DIRECTORY
+import_file_name_element = Config.IMPORT_FILE_NAME_ELEMENT
+eye_model_files = [file for file in os.listdir(import_directory) if import_file_name_element in file]
+if len(eye_model_files) != 1:
+    raise KeyError(
+        f"import directory {import_directory} returns {len(eye_model_files)} files, please alter Config.IMPORT_FILE_NAME_ELEMENT in customization.py"
+    )
+import_path = os.path.join(import_directory, eye_model_files[0])
+
 structure_set = ro_interface.load_current_structureset()
 geometry_generators, _ = ro_interface.load_eyemodel(structure_set=structure_set, eyemodelnr=Config.EYE_MODEL_NR)
-import_path = Config.IMPORT_PATH  # TODO: iets dat 'eyemodel' dingen die in een .json zitten uit een mapje haalt
 
-model_import.import_eye_model(structure_set, geometry_generators, import_path)
+# import the eye model to the relevant structure_set and geometry_generators object
+
+model_import.import_eye_model(geometry_generators, import_path)
 
 
 logger.debug("import complete")
